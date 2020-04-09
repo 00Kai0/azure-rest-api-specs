@@ -79,6 +79,17 @@ clear-output-folder: false
 perform-load: false
 ```
 
+``` yaml $(swagger-to-sdk) 
+swagger-to-sdk: 
+  - repo: azure-sdk-for-python
+    autorest_options: 
+      use: "@microsoft.azure/autorest.python@4.0.70" 
+    after_scripts: 
+      - python ./scripts/multiapi_init_gen.py azure-mgmt-monitor
+      - python ./scripts/trim_aio.py ./sdk/network/azure-mgmt-monitor
+  - repo: azure-sdk-for-python-track2 
+```
+
 ### Tag: package-2019-06-01-only and python
 
 These settings apply only when `--tag=package-2019-06-01-only --python` is specified on the command line.

@@ -1191,7 +1191,7 @@
             "f",
             "s"
           ],
-          "x-ms-client-name": "Resource",
+          "x-ms-client-name": "Resources",
           "description": "The signed services accessible with the service SAS. Possible values include: Blob (b), Container (c), File (f), Share (s)."
         },
         "signedPermission": {
