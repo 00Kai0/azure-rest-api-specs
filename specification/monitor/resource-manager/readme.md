@@ -25,7 +25,7 @@ To see additional help and options, run:
 These are the global settings for the MonitorClient API.
 
 ``` yaml
-title: MonitorClient
+title: MonitorManagementClient
 description: Monitor Management Client
 openapi-type: arm
 tag: package-2019-06

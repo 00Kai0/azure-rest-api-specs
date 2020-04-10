@@ -113,27 +113,6 @@
     }
   },
   "definitions": {
-    "ProxyOnlyResource": {
-      "properties": {
-        "id": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Azure resource Id"
-        },
-        "name": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Azure resource name"
-        },
-        "type": {
-          "type": "string",
-          "readOnly": true,
-          "description": "Azure resource type"
-        }
-      },
-      "x-ms-azure-resource": true,
-      "description": "A proxy only azure resource object"
-    },
     "DiagnosticSettingsCategory": {
       "properties": {
         "categoryType": {
@@ -155,7 +134,7 @@
       "type": "object",
       "allOf": [
         {
-          "$ref": "#/definitions/ProxyOnlyResource"
+          "$ref": "./diagnosticsSettings_API.json#/definitions/ProxyOnlyResource"
         }
       ],
       "properties": {
