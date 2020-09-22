@@ -14,18 +14,15 @@ python:
 ```
 
 ```yaml $(python) && $(track2)
-python:
-  azure-arm: true
-  license-header: MICROSOFT_MIT_NO_VERSION
-  namespace: azure.mgmt.digitaltwins
-  package-name: azure-mgmt-digitaltwins
-  package-version: 2020-03-01-preview
-  clear-output-folder: true
+azure-arm: true
+license-header: MICROSOFT_MIT_NO_VERSION
+namespace: azure.mgmt.digitaltwins
+package-name: azure-mgmt-digitaltwins
+clear-output-folder: false
+no-namespace-folders: true
 ```
 
 ```yaml $(python)
-no-namespace-folders: true
-output-folder: $(python-sdks-folder)/digitaltwins/azure-mgmt-digitaltwins/azure/mgmt/digitaltwins
 python:
   no-namespace-folders: true
   output-folder: $(python-sdks-folder)/digitaltwins/azure-mgmt-digitaltwins/azure/mgmt/digitaltwins
@@ -35,10 +32,22 @@ python:
 
 Generate all API versions currently shipped for this package
 
-```yaml $(python) && $(multiapi)
+```yaml $(python) && $(multiapi) && !$(track2)
 batch:
   - tag: package-2020-10
   - tag: package-2020-03-01-preview
+```
+
+```yaml $(python) && $(multiapi) && $(track2)
+batch:
+  - tag: package-2020-10
+  - tag: package-2020-03-01-preview
+  - multiapiscript: true
+```
+
+``` yaml $(multiapiscript)
+output-folder: $(python-sdks-folder)/digitaltwins/azure-mgmt-digitaltwins/azure/mgmt/digitaltwins/
+perform-load: false
 ```
 
 ### Tag: package-2020-10 and python
@@ -47,6 +56,8 @@ These settings apply only when `--tag=package-2020-10 --python` is specified on 
 Please also specify `--python-sdks-folder=<path to the root directory of your azure-sdk-for-python clone>`.
 
 ``` yaml $(tag) == 'package-2020-10' && $(python)
+namespace: azure.mgmt.digitaltwins.v2020_10_31
+output-folder: $(python-sdks-folder)/digitaltwins/azure-mgmt-digitaltwins/azure/mgmt/digitaltwins/v2020_10_31_preview
 python:
   namespace: azure.mgmt.digitaltwins.v2020_10_31
   output-folder: $(python-sdks-folder)/digitaltwins/azure-mgmt-digitaltwins/azure/mgmt/digitaltwins/v2020_10_31_preview
@@ -58,6 +69,8 @@ These settings apply only when `--tag=package-2020-03-01-preview --python` is sp
 Please also specify `--python-sdks-folder=<path to the root directory of your azure-sdk-for-python clone>`.
 
 ``` yaml $(tag) == 'package-2020-03-01-preview' && $(python)
+namespace: azure.mgmt.digitaltwins.v2020_03_01_preview
+output-folder: $(python-sdks-folder)/digitaltwins/azure-mgmt-digitaltwins/azure/mgmt/digitaltwins/v2020_03_01_preview
 python:
   namespace: azure.mgmt.digitaltwins.v2020_03_01_preview
   output-folder: $(python-sdks-folder)/digitaltwins/azure-mgmt-digitaltwins/azure/mgmt/digitaltwins/v2020_03_01_preview
