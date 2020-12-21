@@ -3780,7 +3780,7 @@
             "OriginGroupOverride"
           ],
           "x-ms-enum": {
-            "name": "DeliveryRuleAction",
+            "name": "DeliveryRuleActionEnum",
             "modelAsString": true
           }
         }
